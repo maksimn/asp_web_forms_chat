@@ -1,0 +1,7 @@
+packages
+.vs/
+WebFormsChat.Frontend/bin/
+WebFormsChat.Frontend/obj/
+WebFormsChat.Frontend/WebFormsChat.Frontend.csproj.user
+WebFormsChat.Frontend/Web.Debug.config
+WebFormsChat.Frontend/Web.Release.config
