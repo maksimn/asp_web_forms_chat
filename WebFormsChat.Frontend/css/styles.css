@@ -1,0 +1,135 @@
+﻿/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Конец мейеровского reset.css */
+
+body {
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #696969;
+}
+
+.header {
+    position: relative;
+    background-color: #093;
+}
+
+.header__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px;
+}
+
+.header__username {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+}
+
+.header__logout-button {
+    margin-left: 10px;
+}
+
+.auth-content {
+    width: 300px;
+    margin: 12px auto 0 auto;
+}
+
+.auth-form__field {
+    margin: 16px 0;
+}
+
+.validation-errors {
+    margin: 20px 10px;
+    color: #f00;
+    font-weight: 600;
+}
+
+.validation-errors__error {
+    margin: 14px;
+    list-style-type: square;
+}
+
+.chat-room {
+    width: 300px;
+    border: 1px solid #696969;
+    margin: 16px auto 0 auto;
+}
+
+.chat-room__header {
+    height: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.chat-message {
+    margin: 8px;
+}
+
+.chat-message__username {
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.chat-message-input__textbox {
+    width: 275px;
+    height: 26px;
+    padding: 9px 0 0 13px;
+    margin: 4px 0 2px 4px;
+    resize: none;
+    border-color: #d3d9de;
+    border-radius: 3px;
+}
+
+.chat-room__chat-messages {
+    height: calc(100vh - 142px);
+    overflow: auto;
+}
