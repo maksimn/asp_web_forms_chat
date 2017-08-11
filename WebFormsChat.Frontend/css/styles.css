@@ -95,7 +95,6 @@ body {
 
 .validation-errors__error {
     margin: 14px;
-    list-style-type: square;
 }
 
 .chat-room {

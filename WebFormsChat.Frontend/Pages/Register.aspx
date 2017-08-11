@@ -2,14 +2,11 @@
          Inherits="WebFormsChat.Frontend.Pages.Register" %>
 
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Чат на ASP.NET</title>
-
     <link rel="stylesheet" href="~/css/styles.css">
 </head>
 <body>
@@ -27,23 +24,51 @@
                 <div class="auth-form__field">
                     <div>Имя: </div>
                     <div>
-                        <asp:TextBox ID="UserName" runat="server" />
+                        <asp:TextBox id="UserName" runat="server" />
                     </div>
                 </div>
                 <div class="auth-form__field">
                     <div>Пароль: </div>
                     <div>
-                        <asp:TextBox ID="Password" TextMode="Password" runat="server" />
+                        <asp:TextBox id="Password" TextMode="Password" runat="server" />
                     </div>
                 </div>
                 <div class="auth-form__field">
                     <div>Повтор пароля: </div>
                     <div>
-                        <asp:TextBox ID="ConfirmPassword" TextMode="Password" runat="server" />
+                        <asp:TextBox id="ConfirmPassword" TextMode="Password" runat="server" />
                     </div>
                 </div>
 
-                <%-- <ValidationErrors /> --%>
+                <div class="validation-errors">
+                    <div class="validation-errors__error">
+                        <asp:RequiredFieldValidator runat="server" id="UserNameValidation"
+                            Display="Dynamic"
+                            ControlToValidate="UserName" 
+                            ErrorMessage="* Имя должно быть заполнено" />
+                    </div>
+                    <div class="validation-errors__error">
+                        <asp:RequiredFieldValidator runat="server" id="PasswordValidation" 
+                            Display="Dynamic"
+                            ControlToValidate="Password" 
+                            ErrorMessage="* Пароль должен быть заполнен" />
+                        </div>
+                    <div class="validation-errors__error">
+                        <asp:RequiredFieldValidator runat="server" id="ConfirmPasswordValidation"
+                            Display="Dynamic"
+                            ControlToValidate="ConfirmPassword" 
+                            ErrorMessage="* Повтор пароля должен быть заполнен" />
+                    </div>
+                    <div class="validation-errors__error">
+                        <asp:CompareValidator runat="server" id="PasswordConfirmValidation" 
+                            Display="Dynamic"
+                            ControlToValidate="Password"
+                            ControlToCompare="ConfirmPassword"
+                            Operator="Equal"
+                            Type="String"
+                            ErrorMessage="* Пароль и его повтор должны совпадать" />
+                    </div>
+                </div>
 
                 <div class="auth-form__field">
                     <asp:Button runat="server" Text="Зарегистрироваться" OnClick="SubmitHandler" />
