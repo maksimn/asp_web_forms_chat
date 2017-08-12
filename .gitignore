@@ -5,3 +5,5 @@ WebFormsChat.Frontend/obj/
 WebFormsChat.Frontend/WebFormsChat.Frontend.csproj.user
 WebFormsChat.Frontend/Web.Debug.config
 WebFormsChat.Frontend/Web.Release.config
+WebFormsChat.Tests/bin/
+WebFormsChat.Tests/obj/
