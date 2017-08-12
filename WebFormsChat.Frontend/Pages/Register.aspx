@@ -60,13 +60,20 @@
                             ErrorMessage="* Повтор пароля должен быть заполнен" />
                     </div>
                     <div class="validation-errors__error">
-                        <asp:CompareValidator runat="server" id="PasswordConfirmValidation" 
+                        <asp:CompareValidator runat="server" id="ConfirmPasswordEqualToPasswordValidation" 
                             Display="Dynamic"
                             ControlToValidate="Password"
                             ControlToCompare="ConfirmPassword"
                             Operator="Equal"
                             Type="String"
                             ErrorMessage="* Пароль и его повтор должны совпадать" />
+                    </div>
+                    <div class="validation-errors__error">
+                        <asp:CustomValidator runat="server" id="UserNameDuplicationValidation"
+                            Display="Dynamic" 
+                            ControlToValidate="UserName" 
+                            OnServerValidate="CheckUserNameDuplication"
+                            ErrorMessage="* Пользователь с данным именем уже существует. Попробуйте другое имя." />
                     </div>
                 </div>
 

@@ -76,12 +76,21 @@ namespace WebFormsChat.Frontend.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmPasswordValidation;
         
         /// <summary>
-        /// PasswordConfirmValidation control.
+        /// ConfirmPasswordEqualToPasswordValidation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator PasswordConfirmValidation;
+        protected global::System.Web.UI.WebControls.CompareValidator ConfirmPasswordEqualToPasswordValidation;
+        
+        /// <summary>
+        /// UserNameDuplicationValidation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator UserNameDuplicationValidation;
     }
 }
