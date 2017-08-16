@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebFormsChat.ChatData\WebFormsChat.ChatData.csproj">
+      <Project>{f0ce0edb-3622-4229-a944-d2e9d1542ae5}</Project>
+      <Name>WebFormsChat.ChatData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFormsChat.Frontend\WebFormsChat.Frontend.csproj">
       <Project>{68c9849a-f9de-445d-b529-08f343bc4d3f}</Project>
       <Name>WebFormsChat.Frontend</Name>

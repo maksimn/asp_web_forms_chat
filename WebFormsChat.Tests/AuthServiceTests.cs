@@ -1,17 +1,22 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebFormsChat.Frontend.Services;
+using WebFormsChat.ChatData.Repositories;
 
 namespace WebFormsChat.Tests {
     [TestClass]
     public class AuthServiceTests {
         [TestMethod]
-        public void RegisterUser__AddToEmptyUserSet__Success() {
+        public void RegisterUser__AddToEmptyUserSet() {
+            string username = "Andrew", password = "abc123";
+
             AuthService authService = new AuthService();
 
-            authService.RegisterUser("Andrew", "abc123");
+            authService.RegisterUser(username, password);
 
-            Assert.IsTrue(false);
+            IChatRepository repository = new MemoryRepository();
+            var user = repository.GetUserByName(username);
+
+            Assert.AreEqual(username, user.Name);
         }
     }
 }
