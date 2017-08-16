@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebFormsChat.Frontend.Pages.Site" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Чат на ASP.NET</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="header__title">ASP.NET чат</h1>
+
+        <asp:contentplaceholder ID="HeadContent" runat="server">
+        </asp:contentplaceholder>
+    </div>
+
+    <asp:contentplaceholder ID="MainContent" runat="server">
+    </asp:contentplaceholder>
+</body>
+</html>

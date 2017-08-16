@@ -1,16 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebFormsChat.Frontend.Pages.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" 
+    MasterPageFile="~/Pages/Site.master" Inherits="WebFormsChat.Frontend.Pages.Login" %>
 
-<!doctype html>
-
-<html>
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        Анша Абдуль братья
-    </div>
-    </form>
-</body>
-</html>
+<asp:Content ID="Main" runat="server" ContentPlaceHolderID="MainContent">
+</asp:Content>
