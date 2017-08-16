@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Data;
 using System.Collections.Generic;
 using WebFormsChat.ChatData.Models;
 
@@ -11,6 +11,9 @@ namespace WebFormsChat.ChatData.Repositories {
         }
 
         public void AddUser(string userName, string password) {
+            if (_users.Find(u => u.Name == userName) != null) {
+                throw new DuplicateNameException();
+            }
             int newId = _users.Count;
             var newUser = new User() { Id = newId, Name = userName, PasswordHash = password };
 

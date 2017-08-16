@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebFormsChat.Frontend.Services;
 using WebFormsChat.ChatData.Repositories;
+using System.Data;
 
 namespace WebFormsChat.Tests {
     [TestClass]
@@ -43,6 +44,15 @@ namespace WebFormsChat.Tests {
             Assert.AreEqual(username1, user1.Name);
             Assert.AreEqual(username2, user2.Name);
             Assert.AreEqual(2, _repository.UserCount);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DuplicateNameException))]
+        public void RegisterUser__TwoUsersWithSameName__ThrowsDuplicateNameException() {
+            string username1 = "Andrew", password1 = "abc123";
+
+            _authService.RegisterUser(username1, password1);
+            _authService.RegisterUser(username1, password1);
         }
     }
 }
