@@ -71,8 +71,7 @@
                     <div class="validation-errors__error">
                         <asp:CustomValidator runat="server" id="UserNameDuplicationValidation"
                             Display="Dynamic" 
-                            ControlToValidate="UserName" 
-                            OnServerValidate="CheckUserNameDuplication"
+                            ControlToValidate="UserName"
                             ErrorMessage="* Пользователь с данным именем уже существует. Попробуйте другое имя." />
                     </div>
                 </div>
@@ -83,5 +82,16 @@
             </form>
         </div>
     </div>
+    <script>
+        var isRegistrationSuccess = <% =IsRegisterSuccess %>;
+        var didRegistrationErrorHappen = <% =DidRegistrationErrorHappen%>;
+
+        if (isRegistrationSuccess) {
+            alert('Новый пользователь успешно зарегистрирован.');
+            window.location.href = '/Pages/Login.aspx';
+        } else if (didRegistrationErrorHappen) {
+            alert('При регистрации произошла ошибка. Попробуйте снова.');
+        }
+    </script>
 </body>
 </html>

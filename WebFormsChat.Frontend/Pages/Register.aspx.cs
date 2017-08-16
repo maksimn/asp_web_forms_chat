@@ -6,13 +6,18 @@ using WebFormsChat.Frontend.Services;
 namespace WebFormsChat.Frontend.Pages {
     public partial class Register : System.Web.UI.Page {
         private AuthService _authService = new AuthService();
+        private bool isRegisterSuccess = false;
+        private bool didRegistrationErrorHappen = false; 
 
-        protected void Page_Load(object sender, EventArgs e) {
-
+        public string IsRegisterSuccess {
+            get { return isRegisterSuccess.ToString().ToLower(); }
         }
 
-        public void CheckUserNameDuplication(object source, ServerValidateEventArgs e) {
+        public string DidRegistrationErrorHappen {
+            get { return didRegistrationErrorHappen.ToString().ToLower(); }
+        }
 
+        protected void Page_Load(object sender, EventArgs e) {
         }
 
         protected void SubmitHandler(object sender, EventArgs e) {
@@ -28,10 +33,11 @@ namespace WebFormsChat.Frontend.Pages {
             // (возможно, общая страница для отображения ошибок приложения).
             try {
                 _authService.RegisterUser(userName, password);
+                isRegisterSuccess = true;
             } catch(DuplicateNameException) {
-
-            } catch(Exception exc) {
-                throw exc;
+                UserNameDuplicationValidation.IsValid = false;
+            } catch(Exception) {
+                didRegistrationErrorHappen = true;
             }
         }
     }
