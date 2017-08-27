@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using WebFormsChat.Frontend.Models;
 using WebFormsChat.Frontend.Services;
 
 namespace WebFormsChat.Frontend.Pages {
@@ -16,12 +17,12 @@ namespace WebFormsChat.Frontend.Pages {
             get { return didRegistrationErrorHappen.ToString().ToLower(); }
         }
 
-        protected void Page_Load(object sender, EventArgs e) {
-        }
-
         protected void SubmitHandler(object sender, EventArgs e) {
             try {
-                authService.RegisterUser(UserName.Text, Password.Text);
+                var userData = new UserRegistrationData() {
+                    UserName = UserName.Text, Password = Password.Text
+                };
+                authService.RegisterUser(userData);
                 isRegisterSuccess = true;
             } catch(DuplicateNameException) {
                 UserNameDuplicationValidation.IsValid = false;

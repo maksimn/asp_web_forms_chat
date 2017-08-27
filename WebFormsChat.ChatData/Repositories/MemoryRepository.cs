@@ -10,7 +10,10 @@ namespace WebFormsChat.ChatData.Repositories {
             get { return _users.Count; }
         }
 
-        public void AddUser(string userName, string password) {
+        public void AddUser(UserRegistrationInput input) {
+            var userName = input.UserName;
+            var password = input.Password;
+
             if (_users.Find(u => u.Name == userName) != null) {
                 throw new DuplicateNameException();
             }
