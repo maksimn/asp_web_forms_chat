@@ -3,8 +3,8 @@ using WebFormsChat.ChatData.Repositories;
 using WebFormsChat.Frontend.Models;
 
 namespace WebFormsChat.Frontend.Services {
-    public sealed class AuthService {
-        private IChatRepository _repository = new MemoryRepository();
+    public sealed class AuthService : IAuthService {
+        private IUserRepository _repository = new MemoryRepository();
 
         public void RegisterUser(UserRegistrationData userData) {
             var userRegistrationInput = new UserRegistrationInput() {

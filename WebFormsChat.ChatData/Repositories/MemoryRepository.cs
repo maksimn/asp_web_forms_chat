@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using WebFormsChat.ChatData.Models;
 
 namespace WebFormsChat.ChatData.Repositories {
-    public sealed class MemoryRepository : IChatRepository {
+    public sealed class MemoryRepository : IUserRepository {
         private static List<User> _users = new List<User>();
 
         public int UserCount {

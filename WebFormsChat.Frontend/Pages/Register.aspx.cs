@@ -5,7 +5,6 @@ using WebFormsChat.Frontend.Services;
 
 namespace WebFormsChat.Frontend.Pages {
     public partial class Register : System.Web.UI.Page {
-        private AuthService authService = new AuthService();
         private bool isRegisterSuccess = false;
         private bool didRegistrationErrorHappen = false; 
 
@@ -22,6 +21,7 @@ namespace WebFormsChat.Frontend.Pages {
                 var userData = new UserRegistrationData() {
                     UserName = UserName.Text, Password = Password.Text
                 };
+                IAuthService authService = new AuthService();
                 authService.RegisterUser(userData);
                 isRegisterSuccess = true;
             } catch(DuplicateNameException) {

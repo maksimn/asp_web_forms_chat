@@ -8,7 +8,7 @@ namespace WebFormsChat.Tests {
     [TestClass]
     public class AuthServiceTests {
         private AuthService _authService;
-        private IChatRepository _repository; 
+        private IUserRepository _repository; 
 
         [TestInitialize]
         public void Init() {
