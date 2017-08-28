@@ -1,5 +1,4 @@
-﻿using WebFormsChat.ChatData.Repositories;
-using WebFormsChat.Frontend.Models;
+﻿using WebFormsChat.Frontend.Models;
 
 namespace WebFormsChat.Frontend.Services {
     public interface IAuthService {
