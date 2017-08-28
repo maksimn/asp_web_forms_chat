@@ -10,9 +10,10 @@ namespace WebFormsChat.Frontend {
 
         protected void Application_PreRequestHandlerExecute(object sender, EventArgs e) {
             var handler = HttpContext.Current.Handler as System.Web.UI.Page;
-            var container = UnityConfig.GetContainer();
 
             if (handler != null) {
+                var container = UnityConfig.GetContainer();
+
                 container.BuildUp(handler.GetType(), handler);
             }
         }

@@ -16,7 +16,7 @@ namespace WebFormsChat.Tests {
         public void Init() {
             using (var container = UnityConfig.GetContainer()) {
                 _authService = container.Resolve<IAuthService>();
-                _repository = new MemoryRepository();
+                _repository = container.Resolve<IUserRepository>();
             }
         }
 

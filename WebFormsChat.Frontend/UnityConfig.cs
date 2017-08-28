@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
+using WebFormsChat.ChatData.Repositories;
 using WebFormsChat.Frontend.Services;
 
 namespace WebFormsChat.Frontend {
@@ -10,6 +11,7 @@ namespace WebFormsChat.Frontend {
         }
     
         public static void RegisterTypes() {
+            container.RegisterType<IUserRepository, MemoryRepository>();
             container.RegisterType<IAuthService, AuthService>();
         }
 

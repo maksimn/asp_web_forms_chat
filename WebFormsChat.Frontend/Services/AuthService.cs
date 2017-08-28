@@ -4,7 +4,11 @@ using WebFormsChat.Frontend.Models;
 
 namespace WebFormsChat.Frontend.Services {
     public sealed class AuthService : IAuthService {
-        private IUserRepository _repository = new MemoryRepository();
+        private IUserRepository _repository;
+
+        public AuthService(IUserRepository repository) {
+            _repository = repository;
+        }
 
         public void RegisterUser(UserRegistrationData userData) {
             var userRegistrationInput = new UserRegistrationInput() {
