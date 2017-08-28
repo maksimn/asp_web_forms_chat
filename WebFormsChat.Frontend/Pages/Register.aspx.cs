@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.Unity;
+using System;
 using System.Data;
 using WebFormsChat.Frontend.Models;
 using WebFormsChat.Frontend.Services;
@@ -6,7 +7,10 @@ using WebFormsChat.Frontend.Services;
 namespace WebFormsChat.Frontend.Pages {
     public partial class Register : System.Web.UI.Page {
         private bool isRegisterSuccess = false;
-        private bool didRegistrationErrorHappen = false; 
+        private bool didRegistrationErrorHappen = false;
+
+        [Dependency]
+        public IAuthService AuthService { get; set; }
 
         public string IsRegisterSuccess {
             get { return isRegisterSuccess.ToString().ToLower(); }
@@ -21,8 +25,7 @@ namespace WebFormsChat.Frontend.Pages {
                 var userData = new UserRegistrationData() {
                     UserName = UserName.Text, Password = Password.Text
                 };
-                IAuthService authService = new AuthService();
-                authService.RegisterUser(userData);
+                AuthService.RegisterUser(userData);
                 isRegisterSuccess = true;
             } catch(DuplicateNameException) {
                 UserNameDuplicationValidation.IsValid = false;

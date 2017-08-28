@@ -1,19 +1,23 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.Practices.Unity;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data;
+using WebFormsChat.Frontend;
 using WebFormsChat.Frontend.Models;
 using WebFormsChat.Frontend.Services;
 using WebFormsChat.ChatData.Repositories;
-using System.Data;
 
 namespace WebFormsChat.Tests {
     [TestClass]
     public class AuthServiceTests {
-        private AuthService _authService;
+        private IAuthService _authService;
         private IUserRepository _repository; 
 
         [TestInitialize]
         public void Init() {
-            _authService = new AuthService();
-            _repository = new MemoryRepository();
+            using (var container = UnityConfig.GetContainer()) {
+                _authService = container.Resolve<IAuthService>();
+                _repository = new MemoryRepository();
+            }
         }
 
         [TestCleanup]
