@@ -10,6 +10,10 @@ namespace WebFormsChat.Frontend.Services {
             _repository = repository;
         }
 
+        public bool AuthenticateUser(string userName, string password) {
+            return _repository.LoginUser(userName, password);
+        }
+
         public void RegisterUser(UserRegistrationData userData) {
             var userRegistrationInput = new UserRegistrationInput() {
                 UserName = userData.UserName,

@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Collections.Generic;
 using WebFormsChat.ChatData.Models;
+using System;
 
 namespace WebFormsChat.ChatData.Repositories {
     public sealed class MemoryRepository : IUserRepository {
@@ -29,6 +30,12 @@ namespace WebFormsChat.ChatData.Repositories {
 
         public User GetUserByName(string userName) {
             return _users.Find(u => u.Name == userName);
+        }
+
+        public bool LoginUser(string userName, string password) {
+            var user = GetUserByName(userName);
+
+            return user != null && user.PasswordHash == password;
         }
     }
 }

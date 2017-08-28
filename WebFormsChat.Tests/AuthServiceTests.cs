@@ -12,6 +12,10 @@ namespace WebFormsChat.Tests {
         private IAuthService _authService;
         private IUserRepository _repository; 
 
+        private UserRegistrationData userData = new UserRegistrationData() {
+            UserName = "Andrew", Password = "abc123"
+        };
+
         [TestInitialize]
         public void Init() {
             using (var container = UnityConfig.GetContainer()) {
@@ -37,15 +41,14 @@ namespace WebFormsChat.Tests {
 
         [TestMethod]
         public void RegisterUser__TwoUsers() {
-            var userData1 = new UserRegistrationData() { UserName = "Andrew", Password = "abc123" };
             var userData2 = new UserRegistrationData() { UserName = "Jen", Password = "123" };
 
-            _authService.RegisterUser(userData1);
+            _authService.RegisterUser(userData);
             _authService.RegisterUser(userData2);
-            var user1 = _repository.GetUserByName(userData1.UserName);
+            var user1 = _repository.GetUserByName(userData.UserName);
             var user2 = _repository.GetUserByName(userData2.UserName);
 
-            Assert.AreEqual(userData1.UserName, user1.Name);
+            Assert.AreEqual(userData.UserName, user1.Name);
             Assert.AreEqual(userData2.UserName, user2.Name);
             Assert.AreEqual(2, _repository.UserCount);
         }
@@ -53,10 +56,24 @@ namespace WebFormsChat.Tests {
         [TestMethod]
         [ExpectedException(typeof(DuplicateNameException))]
         public void RegisterUser__TwoUsersWithSameName__ThrowsDuplicateNameException() {
-            var userData = new UserRegistrationData() { UserName = "Andrew", Password = "abc123" };
+            _authService.RegisterUser(userData);
+            _authService.RegisterUser(userData);
+        }
 
+        [TestMethod]
+        public void AuthenticateUser__CorrectUserData_ReturnsTrue() {
             _authService.RegisterUser(userData);
+            var result = _authService.AuthenticateUser(userData.UserName, userData.Password);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void AuthenticateUser__IncorrectUserData_ReturnsFalse() {
             _authService.RegisterUser(userData);
+            var result = _authService.AuthenticateUser(userData.UserName, userData.Password + "1");
+
+            Assert.IsFalse(result);
         }
     }
 }

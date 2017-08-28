@@ -86,6 +86,7 @@
     <Content Include="css\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Pages\Chat.aspx" />
     <Content Include="Pages\Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -104,6 +105,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\UserRegistrationData.cs" />
+    <Compile Include="Pages\Chat.aspx.cs">
+      <DependentUpon>Chat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Chat.aspx.designer.cs">
+      <DependentUpon>Chat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
