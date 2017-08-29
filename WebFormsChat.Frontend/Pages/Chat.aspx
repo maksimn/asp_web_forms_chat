@@ -2,4 +2,5 @@
     MasterPageFile="~/Pages/Site.master" Inherits="WebFormsChat.Frontend.Pages.Chat" %>
 
 <asp:Content ID="Main" runat="server" ContentPlaceHolderID="MainContent">
+    Чят
 </asp:Content>

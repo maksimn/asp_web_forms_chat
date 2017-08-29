@@ -12,6 +12,12 @@ namespace WebFormsChat.Frontend.Pages {
         [Dependency]
         public IAuthService AuthService { get; set; }
 
+        protected void Page_Load(object sender, EventArgs e) {
+            if (User.Identity.IsAuthenticated) {
+                Response.Redirect("~/Pages/Chat.aspx");
+            }
+        }
+
         public string IsRegisterSuccess {
             get { return isRegisterSuccess.ToString().ToLower(); }
         }

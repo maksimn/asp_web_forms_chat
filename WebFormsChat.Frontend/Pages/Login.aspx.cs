@@ -8,6 +8,12 @@ namespace WebFormsChat.Frontend.Pages {
         [Dependency]
         public IAuthService AuthService { get; set; }
 
+        protected void Page_Load(object sender, EventArgs e) {
+            if (User.Identity.IsAuthenticated) {
+                Response.Redirect("~/Pages/Chat.aspx");
+            }
+        }
+
         protected void SubmitHandler(object sender, EventArgs e) {
             var isAuthenticated = AuthService.AuthenticateUser(UserName.Text, Password.Text);
 

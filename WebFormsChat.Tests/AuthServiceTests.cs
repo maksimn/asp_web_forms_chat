@@ -31,7 +31,6 @@ namespace WebFormsChat.Tests {
 
         [TestMethod]
         public void RegisterUser__SingleUser() {
-            var userData = new UserRegistrationData() { UserName = "Andrew", Password = "abc123" };
             _authService.RegisterUser(userData);
             var user = _repository.GetUserByName(userData.UserName);
 
