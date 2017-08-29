@@ -1,6 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Chat.aspx.cs" 
     MasterPageFile="~/Pages/Site.master" Inherits="WebFormsChat.Frontend.Pages.Chat" %>
 
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
+    <div class="header__username">
+        <form runat="server">
+            <%= User.Identity.Name %>
+            <span class="header__logout-button">
+                <asp:Button runat="server" Text="Выйти" OnClick="SignOutHandler" />
+            </span>
+        </form>
+    </div>
+</asp:Content>
+
 <asp:Content ID="Main" runat="server" ContentPlaceHolderID="MainContent">
     <div class="chat-room">
 

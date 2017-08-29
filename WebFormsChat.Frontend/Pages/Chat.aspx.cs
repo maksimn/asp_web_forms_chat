@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using System;
+using System.Web.Security;
 using WebFormsChat.Frontend.Services;
 
 namespace WebFormsChat.Frontend.Pages {
@@ -12,6 +13,10 @@ namespace WebFormsChat.Frontend.Pages {
                 Response.StatusCode = 401;
                 Response.End();
             }
+        }
+
+        protected void SignOutHandler(object sender, EventArgs e) {
+            FormsAuthentication.SignOut();
         }
     }
 }
