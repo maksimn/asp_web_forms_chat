@@ -17,6 +17,8 @@ namespace WebFormsChat.Frontend.Pages {
 
         protected void SignOutHandler(object sender, EventArgs e) {
             FormsAuthentication.SignOut();
+            Response.StatusCode = 401;
+            Response.End();
         }
     }
 }

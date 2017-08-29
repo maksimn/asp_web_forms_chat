@@ -18,8 +18,7 @@ namespace WebFormsChat.Frontend.Pages {
             var isAuthenticated = AuthService.AuthenticateUser(UserName.Text, Password.Text);
 
             if (isAuthenticated) {
-                FormsAuthentication.SetAuthCookie(UserName.Text, false);
-                Response.Redirect("~/Pages/Chat.aspx");
+                FormsAuthentication.RedirectFromLoginPage(UserName.Text, false);
             } else {
                 LoginDataValidation.IsValid = false;
             }
