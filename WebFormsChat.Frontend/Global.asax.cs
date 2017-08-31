@@ -2,6 +2,7 @@
 using System;
 using System.Web;
 using System.Web.Routing;
+using WebFormsChat.Frontend.HttpHandlers;
 
 namespace WebFormsChat.Frontend {
     public class Global : HttpApplication {
@@ -17,7 +18,11 @@ namespace WebFormsChat.Frontend {
         }
 
         protected void Application_PreRequestHandlerExecute(object sender, EventArgs e) {
-            var handler = HttpContext.Current.Handler as System.Web.UI.Page;
+            object handler = HttpContext.Current.Handler as System.Web.UI.Page;
+
+            if (handler == null) {
+                handler = HttpContext.Current.Handler as ChatHandler;
+            }
 
             if (handler != null) {
                 var container = UnityConfig.GetContainer();

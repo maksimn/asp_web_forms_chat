@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Practices.Unity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.WebSockets;
@@ -12,9 +13,11 @@ using WebFormsChat.ChatData.Repositories;
 
 namespace WebFormsChat.Frontend.HttpHandlers {
     public class ChatHandler : IHttpHandler {
-        private readonly MemoryRepository repository = new MemoryRepository();
         private static List<WebSocket> webSockets = new List<WebSocket>();
         private const int MSG_BUFFER_SIZE = 1000;
+
+        [Dependency]
+        public IMessageRepository Repository { get; set; }
 
         private async Task ProcessWebSocketData(AspNetWebSocketContext context) {
             var socket = context.WebSocket;
@@ -51,7 +54,7 @@ namespace WebFormsChat.Frontend.HttpHandlers {
         private void AddChatMessageToStorage(string str) {
             var chatMessage = JsonConvert.DeserializeObject<ChatMessage>(str);
             if (chatMessage != null) {
-                repository.AddChatMessage(chatMessage);
+                Repository.AddChatMessage(chatMessage);
             }
         }
 
