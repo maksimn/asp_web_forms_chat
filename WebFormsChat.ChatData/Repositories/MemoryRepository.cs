@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Collections.Generic;
 using WebFormsChat.ChatData.Models;
+using System;
 
 namespace WebFormsChat.ChatData.Repositories {
     public sealed class MemoryRepository : IUserRepository, IMessageRepository {
@@ -47,6 +48,10 @@ namespace WebFormsChat.ChatData.Repositories {
             var user = GetUserByName(userName);
 
             return user != null && user.PasswordHash == password;
+        }
+
+        public void AddChatMessage(ChatMessage chatMessage) {
+            _messages.Add(chatMessage);
         }
     }
 }
