@@ -83,7 +83,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\styles.css" />
+    <Content Include="Pages\css\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Pages\Chat.aspx" />
