@@ -26,6 +26,6 @@ CREATE TABLE Users (
 
 CREATE TABLE ChatMessages (
    Id int NOT NULL PRIMARY KEY IDENTITY(1,1),
-   UserId int NOT NULL FOREIGN KEY REFERENCES Users(Id),
+   UserName nvarchar(50) NOT NULL FOREIGN KEY REFERENCES Users(Name),
    Text nvarchar(500) NOT NULL
 );
