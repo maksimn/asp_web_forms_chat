@@ -30,19 +30,19 @@ namespace WebFormsChat.Frontend.Services {
 
             // Listening this socket
             while (socket.State == WebSocketState.Open) {
-                var receiveBuffer = new ArraySegment<byte>(new byte[MSG_BUFFER_SIZE]);
-
+                var receivedBuffer = new ArraySegment<byte>(new byte[MSG_BUFFER_SIZE]);
                 // Waiting data from the socket
-                var receiveResult = await socket.ReceiveAsync(receiveBuffer, CancellationToken.None);
-
-                var stringResult = BufferToString(receiveBuffer, receiveResult.Count);
-
-                AddChatMessageToStorage(stringResult);
-
+                var receivedResult = await socket.ReceiveAsync(receivedBuffer, CancellationToken.None);
+                var stringResult = BufferToString(receivedBuffer, receivedResult.Count);
+                // Add chat message to repository
+                var chatMessage = JsonConvert.DeserializeObject<ChatMessage>(stringResult);
+                if (chatMessage != null) {
+                    repository.AddChatMessage(chatMessage);
+                }
                 // Send the message to clients
                 await SendChatMessageToAll(stringResult);
             }
-            // Connection closed. Remove this socket.
+            // Connection has been closed. Remove this socket.
             Monitor.Enter(_lock);
             webSockets.Remove(socket);
             Monitor.Exit(_lock);
@@ -55,13 +55,6 @@ namespace WebFormsChat.Frontend.Services {
                     await webSocket.SendAsync(outputBuffer, WebSocketMessageType.Text, true,
                         CancellationToken.None);
                 }
-            }
-        }
-
-        private void AddChatMessageToStorage(string str) {
-            var chatMessage = JsonConvert.DeserializeObject<ChatMessage>(str);
-            if (chatMessage != null) {
-                repository.AddChatMessage(chatMessage);
             }
         }
 
