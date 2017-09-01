@@ -8,11 +8,6 @@ namespace WebFormsChat.ChatData.Repositories {
         private static List<User> _users = new List<User>();
         private static List<ChatMessage> _messages = new List<ChatMessage>();
 
-        static MemoryRepository() {
-            _messages.Add(new ChatMessage() { Id = 1, UserName = "Капитан", Text = "Я тебе слово давал, с**а??" });
-            _messages.Add(new ChatMessage() { Id = 2, UserName = "Пахом", Text = "Тигр" });
-        }
-
         public IEnumerable<ChatMessage> ChatMessages {          
             get {
                 return _messages;
@@ -20,7 +15,9 @@ namespace WebFormsChat.ChatData.Repositories {
         }
 
         public int UserCount {
-            get { return _users.Count; }
+            get {
+                return _users.Count;
+            }
         }
 
         public void AddUser(UserRegistrationInput input) {
