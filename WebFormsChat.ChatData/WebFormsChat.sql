@@ -84,3 +84,33 @@ BEGIN
 END;
 
 GO
+
+CREATE PROC AddChatMessage
+    @userName AS nvarchar(50),
+	@text AS nvarchar(500)
+AS
+BEGIN
+    BEGIN TRY
+        INSERT ChatMessages(UserName, Text)
+	    VALUES (@userName, @text);
+	END TRY
+	BEGIN CATCH
+	    THROW;
+	END CATCH
+	RETURN;
+END;
+
+GO 
+
+CREATE PROC GetChatMessages
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+	SELECT Id, UserName, Text
+	FROM ChatMessages;
+
+	RETURN;
+END;
+
+GO

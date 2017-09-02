@@ -1,13 +1,37 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using WebFormsChat.ChatData.Models;
 
 namespace WebFormsChat.ChatData.Repositories {
-    public sealed class SqlRepository : IUserRepository {
+    public sealed class SqlRepository : IUserRepository, IMessageRepository {
         private string cnnString;
 
         public SqlRepository() {
             cnnString = "data source=MAKSIMPC;Integrated Security=True;Initial Catalog=WebFormsChat";
+        }
+
+        public IEnumerable<ChatMessage> ChatMessages {
+            get {
+                using (var conn = new SqlConnection(cnnString)) {
+                    using (var command = new SqlCommand("GetChatMessages", conn) {
+                        CommandType = CommandType.StoredProcedure
+                    }) {
+                        conn.Open();
+                        var reader = command.ExecuteReader();
+                        var messages = new List<ChatMessage>();
+                        while (reader.Read()) {
+                            messages.Add(new ChatMessage() {
+                                Id = (int)reader["Id"],
+                                UserName = (string)reader["UserName"],
+                                Text = (string)reader["Text"]
+                            });
+                        }
+                        return messages;
+                    }
+                }
+            }
         }
 
         public int UserCount {
@@ -23,6 +47,19 @@ namespace WebFormsChat.ChatData.Repositories {
                     }
                 }
                 return -1;
+            }
+        }
+
+        public void AddChatMessage(ChatMessage chatMessage) {
+            using (var conn = new SqlConnection(cnnString)) {
+                using (var command = new SqlCommand("AddChatMessage", conn) {
+                    CommandType = CommandType.StoredProcedure
+                }) {
+                    command.Parameters.Add(new SqlParameter("@userName", chatMessage.UserName));
+                    command.Parameters.Add(new SqlParameter("@text", chatMessage.Text));
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -42,7 +79,8 @@ namespace WebFormsChat.ChatData.Repositories {
             } catch (SqlException e) {
                 if (e.Message.Contains("duplicate key")) {
                     throw new DuplicateNameException();
-                }
+                } 
+                throw e;
             }
         }
 

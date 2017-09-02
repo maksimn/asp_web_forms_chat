@@ -15,7 +15,8 @@ namespace WebFormsChat.Frontend {
             container.RegisterType<IUserRepository, SqlRepository>();
             container.RegisterType<IAuthService, AuthService>();
 
-            container.RegisterType<IMessageRepository, MemoryRepository>();
+            // container.RegisterType<IMessageRepository, MemoryRepository>();
+            container.RegisterType<IMessageRepository, SqlRepository>();
             container.RegisterType<IChatService, ChatService>();
         }
 
