@@ -11,7 +11,8 @@ namespace WebFormsChat.Frontend {
         }
     
         public static void RegisterTypes() {
-            container.RegisterType<IUserRepository, MemoryRepository>();
+            // container.RegisterType<IUserRepository, MemoryRepository>();
+            container.RegisterType<IUserRepository, SqlRepository>();
             container.RegisterType<IAuthService, AuthService>();
 
             container.RegisterType<IMessageRepository, MemoryRepository>();

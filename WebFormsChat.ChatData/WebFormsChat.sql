@@ -30,6 +30,8 @@ CREATE TABLE ChatMessages (
    Text nvarchar(500) NOT NULL
 );
 
+GO
+
 CREATE PROC AddUser
     @userName AS nvarchar(50),
 	@passwordHash AS nvarchar(1000)
@@ -45,7 +47,9 @@ BEGIN
 	RETURN;
 END;
 
-CREATE PROC GeyUserByName
+GO
+
+CREATE PROC GetUserByName
     @userName AS nvarchar(50)
 AS
 BEGIN
@@ -58,17 +62,19 @@ BEGIN
 	RETURN;
 END;
 
+GO
+
 CREATE PROC NumberOfUsers
-    @numUsers AS INT OUTPUT
 AS
 BEGIN
-    SET NOCOUNT ON;
 
-	SELECT @numUsers = COUNT(*)
+	SELECT COUNT(*) AS NumUsers
 	FROM Users;
 	
 	RETURN;
 END;
+
+GO
 
 CREATE PROC DeleteAllUsers
 AS
@@ -76,3 +82,5 @@ BEGIN
     DELETE FROM Users;
     RETURN;
 END;
+
+GO
