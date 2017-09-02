@@ -29,3 +29,50 @@ CREATE TABLE ChatMessages (
    UserName nvarchar(50) NOT NULL FOREIGN KEY REFERENCES Users(Name),
    Text nvarchar(500) NOT NULL
 );
+
+CREATE PROC AddUser
+    @userName AS nvarchar(50),
+	@passwordHash AS nvarchar(1000)
+AS
+BEGIN
+    BEGIN TRY
+        INSERT Users(Name, PasswordHash)
+	    VALUES (@userName, @passwordHash);
+	END TRY
+	BEGIN CATCH
+	    THROW;
+	END CATCH
+	RETURN;
+END;
+
+CREATE PROC GeyUserByName
+    @userName AS nvarchar(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+	SELECT Id, Name, PasswordHash
+	FROM Users
+	WHERE Name = @userName;
+	
+	RETURN;
+END;
+
+CREATE PROC NumberOfUsers
+    @numUsers AS INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+	SELECT @numUsers = COUNT(*)
+	FROM Users;
+	
+	RETURN;
+END;
+
+CREATE PROC DeleteAllUsers
+AS
+BEGIN
+    DELETE FROM Users;
+    RETURN;
+END;
