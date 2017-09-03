@@ -10,14 +10,16 @@ namespace WebFormsChat.Frontend.Pages {
     public partial class Chat : System.Web.UI.Page {
         [Dependency]
         public IChatService ChatService { get; set; }
+        [Dependency]
+        public ICacheService CacheService { get; set; }
 
         public IEnumerable<ChatMessage> ChatMessages {
             get {
-                var chatMessages = Cache["ChatMessages"] as IEnumerable<ChatMessage>;
+                var chatMessages = CacheService.Get("ChatMessages") as IEnumerable<ChatMessage>;
                 if (chatMessages == null) {
                     chatMessages = ChatService.ChatMessages;
                     var dependency = new SqlCacheDependency("WebFormsChat", "ChatMessages");
-                    Cache.Insert("ChatMessages", chatMessages, dependency);
+                    CacheService.AddToCache("ChatMessages", chatMessages, dependency);
                 } 
                 return chatMessages;
             }

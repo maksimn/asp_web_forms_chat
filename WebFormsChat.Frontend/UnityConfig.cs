@@ -11,13 +11,11 @@ namespace WebFormsChat.Frontend {
         }
     
         public static void RegisterTypes() {
-            // container.RegisterType<IUserRepository, MemoryRepository>();
             container.RegisterType<IUserRepository, SqlRepository>();
             container.RegisterType<IAuthService, AuthService>();
-
-            // container.RegisterType<IMessageRepository, MemoryRepository>();
             container.RegisterType<IMessageRepository, SqlRepository>();
             container.RegisterType<IChatService, ChatService>();
+            container.RegisterType<ICacheService, AspNetCacheService>();
         }
 
         public static UnityContainer GetContainer() {

@@ -1,22 +1,14 @@
 ﻿using Microsoft.Practices.Unity;
 using System;
-using System.Configuration;
 using System.Web;
-using System.Web.Caching;
 using System.Web.Routing;
 using WebFormsChat.Frontend.HttpHandlers;
 
 namespace WebFormsChat.Frontend {
     public class Global : HttpApplication {
         protected void Application_Start(object sender, EventArgs e) {
-            CachingConfig();
             RegisterRoutes(RouteTable.Routes);
             UnityConfig.RegisterTypes();
-        }
-
-        private static void CachingConfig() {
-            var cnnStr = ConfigurationManager.ConnectionStrings["WebFormsChat"].ConnectionString;
-            SqlCacheDependencyAdmin.EnableTableForNotifications(cnnStr, "ChatMessages");
         }
 
         private static void RegisterRoutes(RouteCollection routes) {
