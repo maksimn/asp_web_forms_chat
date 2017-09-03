@@ -19,7 +19,7 @@
 
         <div class="chat-room__chat-messages">
             <% 
-                foreach(var message in ChatService.ChatMessages) {
+                foreach(var message in ChatMessages) {
             %>
                     <div class="chat-message">
                         <div class="chat-message__username">

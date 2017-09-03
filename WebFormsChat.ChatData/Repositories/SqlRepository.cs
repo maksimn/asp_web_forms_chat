@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using WebFormsChat.ChatData.Models;
 
 namespace WebFormsChat.ChatData.Repositories {
     public sealed class SqlRepository : IUserRepository, IMessageRepository {
-        private string cnnString;
-
-        public SqlRepository() {
-            cnnString = "data source=MAKSIMPC;Integrated Security=True;Initial Catalog=WebFormsChat";
-        }
+        private string cnnString = "data source=MAKSIMPC;Integrated Security=True;" + 
+                                   "Initial Catalog=WebFormsChat";
 
         public IEnumerable<ChatMessage> ChatMessages {
             get {
