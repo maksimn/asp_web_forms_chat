@@ -91,6 +91,8 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Pages\Chat.aspx" />
+    <Content Include="Pages\scripts\chatMessagesScroll.js" />
+    <Content Include="Pages\scripts\chatWebSockets.js" />
     <Content Include="Pages\Site.Master" />
     <Content Include="HttpHandlers\ChatHandler.ashx" />
     <None Include="Web.Debug.config">

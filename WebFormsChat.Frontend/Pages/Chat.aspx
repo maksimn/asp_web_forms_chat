@@ -43,66 +43,8 @@
         </div>
     </div>
     <script>
-        window.onload = function () {
-            var host = window.location.host;
-            var socket = new WebSocket('ws://' + host + '/HttpHandlers/ChatHandler.ashx');
-
-            var isScrolledFromBottomPos = false;
-
-            var chatMessages = document.querySelector('.chat-room__chat-messages');
-            var chatMessageInput = document.getElementById('chatMessageInput');
-
-            chatMessages.addEventListener('scroll', scrollHandler, false);
-            setInterval(updateScroll, 300);
-
-            function scrollHandler() {
-                isScrolledFromBottomPos = 
-                    chatMessages.clientHeight + chatMessages.scrollTop !== 
-                    chatMessages.scrollHeight;
-            }
-
-            function updateScroll() {
-                if (!isScrolledFromBottomPos) {
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-            }
-
-            chatMessageInput.onkeypress = function (e) {
-                if (e.key === 'Enter') {
-                    var chatMessage = {
-                        UserName: <%= User.Identity.Name %>,
-                        Text: e.target.value
-                    };
-                    socket.send(JSON.stringify(chatMessage));
-                }
-            };
-
-            chatMessageInput.onkeyup = function (e) {
-                if (e.key === 'Enter') {
-                    e.target.value = '';
-                }
-            };
-
-            socket.onmessage = function (msg) {
-                var trimChatMessage = msg.data.replace(/\0/g, '');
-                var chatMessageObject = JSON.parse(trimChatMessage);
-
-                var chatMessage = document.createElement('div');
-                chatMessage.className = 'chat-message';
-                chatMessage.innerHTML = '<div class="chat-message__username">' + 
-                    chatMessageObject.UserName + '</div><div class="chat-message__text">' + 
-                    chatMessageObject.Text + '</div>';
-
-                chatMessages.appendChild(chatMessage);
-            };
-
-            socket.onclose = function () {
-                alert('Соединение закрыто.');
-            }
-
-            socket.onerror = function () {
-                alert('Произошла ошибка соединения с чатом.');
-            };
-        };
+        var globalUserName = <%= User.Identity.Name %>;
     </script>
+    <script src="/Pages/scripts/chatMessagesScroll.js"></script>
+    <script src="/Pages/scripts/chatWebSockets.js"></script>
 </asp:Content>
