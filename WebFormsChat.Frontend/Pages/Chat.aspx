@@ -4,7 +4,9 @@
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
     <div class="header__username">
         <form runat="server">
-            <%= User.Identity.Name %>
+            <a href="/Pages/Profile.aspx" style="color:#ffffff;">
+                <%= User.Identity.Name %>
+            </a>
             <span class="header__logout-button">
                 <asp:Button runat="server" Text="Выйти" OnClick="SignOutHandler" />
             </span>

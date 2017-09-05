@@ -91,6 +91,7 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Pages\Chat.aspx" />
+    <Content Include="Pages\Profile.aspx" />
     <Content Include="Pages\scripts\chatMessagesScroll.js" />
     <Content Include="Pages\scripts\chatWebSockets.js" />
     <Content Include="Pages\Site.Master" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

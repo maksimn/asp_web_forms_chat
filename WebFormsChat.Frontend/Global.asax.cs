@@ -14,6 +14,7 @@ namespace WebFormsChat.Frontend {
         private static void RegisterRoutes(RouteCollection routes) {
             routes.MapPageRoute("Register", "Pages/Register.aspx", "~/Pages/Register.aspx");
             routes.MapPageRoute("Login", "Pages/Login.aspx", "~/Pages/Login.aspx");
+            routes.MapPageRoute("Profile", "Pages/Profile.aspx", "~/Pages/Profile.aspx");
             routes.MapPageRoute("Any", "{*url}", "~/Pages/Chat.aspx");
         }
 
