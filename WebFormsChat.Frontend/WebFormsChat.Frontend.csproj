@@ -87,6 +87,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\css\headerTheme.css" />
     <Content Include="Pages\css\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />

@@ -16,7 +16,20 @@ namespace WebFormsChat.Frontend.Pages {
                 Response.End();
             } else {
                 UserData = UserRepository.GetUserByName(User.Identity.Name);
+                if (!IsPostBack) {
+                    SetHeaderColorPickerStateFromSession();
+                }
             }
+        }
+
+        private void SetHeaderColorPickerStateFromSession() {
+            if (Session["HeaderColor"] != null) {
+                HeaderColorPicker.SelectedValue = Session["HeaderColor"] as string;
+            }
+        }
+
+        protected void OnHeaderColorPickerSelectedIndexChanged(object sender, EventArgs e) {
+            Session["HeaderColor"] = HeaderColorPicker.SelectedValue;
         }
     }
 }

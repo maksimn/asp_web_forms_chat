@@ -7,10 +7,20 @@
 
         <form id="UserPreferencesForm" runat="server">
             <div class="auth-form__field">
-                <div>ID: <%= UserData.Id %></div>
+                ID: <%= UserData.Id %>
             </div>
             <div class="auth-form__field">
-                <div>Имя: <%= UserData.Name %></div>
+                Имя: <%= UserData.Name %>
+            </div>
+
+            <div class="auth-form__field">
+                Цвет заголовка страницы:
+
+                    <asp:DropDownList ID="HeaderColorPicker" runat="server" AutoPostBack="True"
+                        OnSelectedIndexChanged="OnHeaderColorPickerSelectedIndexChanged">
+                        <asp:ListItem>Зеленый</asp:ListItem>
+                        <asp:ListItem>Синий</asp:ListItem>
+                    </asp:DropDownList>
             </div>
 
             <div class="auth-form__field">

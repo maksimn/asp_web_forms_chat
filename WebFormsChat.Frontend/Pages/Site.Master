@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Чат на ASP.NET</title>
     <link rel="stylesheet" href="~/Pages/css/styles.css">
+    <% if (HasSpecialHeaderTheme()) { %>
+        <link rel="stylesheet" href="~/Pages/css/headerTheme.css">
+    <% } %>
 </head>
 <body>
     <div class="header">
