@@ -2,6 +2,7 @@
 using System;
 using WebFormsChat.ChatData.Models;
 using WebFormsChat.ChatData.Repositories;
+using WebFormsChat.Frontend.Pages.Themes;
 
 namespace WebFormsChat.Frontend.Pages {
     public partial class Profile : System.Web.UI.Page {
@@ -17,19 +18,13 @@ namespace WebFormsChat.Frontend.Pages {
             } else {
                 UserData = UserRepository.GetUserByName(User.Identity.Name);
                 if (!IsPostBack) {
-                    SetHeaderColorPickerStateFromSession();
+                    HeaderTheme.InitThemeControl(HeaderColorPicker);
                 }
             }
         }
 
-        private void SetHeaderColorPickerStateFromSession() {
-            if (Session["HeaderColor"] != null) {
-                HeaderColorPicker.SelectedValue = Session["HeaderColor"] as string;
-            }
-        }
-
         protected void OnHeaderColorPickerSelectedIndexChanged(object sender, EventArgs e) {
-            Session["HeaderColor"] = HeaderColorPicker.SelectedValue;
+            HeaderTheme.SetThemeFromControl(HeaderColorPicker);
         }
     }
 }

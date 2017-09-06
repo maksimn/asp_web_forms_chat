@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebFormsChat.Frontend.Pages.Site" %>
+<%@ Import namespace="WebFormsChat.Frontend.Pages.Themes" %>
 
 <!DOCTYPE html>
 <html>
@@ -7,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Чат на ASP.NET</title>
     <link rel="stylesheet" href="~/Pages/css/styles.css">
-    <% if (HasSpecialHeaderTheme()) { %>
-        <link rel="stylesheet" href="~/Pages/css/headerTheme.css">
-    <% } %>
+    <%= HeaderTheme.InjectStylesheet() %>
 </head>
 <body>
     <div class="header">
