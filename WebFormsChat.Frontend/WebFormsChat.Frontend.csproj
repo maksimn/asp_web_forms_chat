@@ -162,6 +162,8 @@
     <Compile Include="Services\IAuthService.cs" />
     <Compile Include="Services\ICacheService.cs" />
     <Compile Include="Services\IChatService.cs" />
+    <Compile Include="Services\IWebSocketChatMessageService.cs" />
+    <Compile Include="Services\WebSocketChatMessageService.cs" />
     <Compile Include="UnityConfig.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,7 @@ namespace WebFormsChat.Frontend {
             container.RegisterType<IMessageRepository, SqlRepository>();
             container.RegisterType<IChatService, ChatService>();
             container.RegisterType<ICacheService, AspNetCacheService>();
+            container.RegisterType<IWebSocketChatMessageService, WebSocketChatMessageService>();
         }
 
         public static UnityContainer GetContainer() {
