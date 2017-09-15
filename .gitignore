@@ -1,12 +1,8 @@
 packages
 TestResults
 .vs/
-WebFormsChat.Frontend/bin/
-WebFormsChat.Frontend/obj/
 WebFormsChat.Frontend/WebFormsChat.Frontend.csproj.user
 WebFormsChat.Frontend/Web.Debug.config
 WebFormsChat.Frontend/Web.Release.config
-WebFormsChat.Tests/bin/
-WebFormsChat.Tests/obj/
-WebFormsChat.ChatData/bin/
-WebFormsChat.ChatData/obj/
+*/bin/
+*/obj/
