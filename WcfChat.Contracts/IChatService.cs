@@ -4,7 +4,7 @@ using WcfChat.Contracts.Data;
 
 namespace WcfChat.Contracts {
     [ServiceContract]
-    public interface IChatWcfService {
+    public interface IChatService {
         [OperationContract]
         IEnumerable<ChatMessage> ChatMessages();
 
